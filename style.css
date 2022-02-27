@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+}
+
+#pong {
+    width: 900px;
+    height: 560px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
