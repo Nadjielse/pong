@@ -51,6 +51,7 @@ class Ball {
             }
         }
 
+        //Move ball
         this.y += this.vSpeed;
         this.x += this.hSpeed;
     }
@@ -71,9 +72,10 @@ class Racket {
         }
 
         this.y = canvas.height / 2 - this.height / 2;
-        this.speed = 5;
+        this.speed = 10;
         this.movingUp = false;
         this.movingDown = false;
+        this.strongStrike = false;
     }
 
     draw() {

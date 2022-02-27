@@ -19,6 +19,11 @@ function manageKeyDown(e) {
             break;
         case "ArrowLeft":
             keys.ArrowLeft = true;
+            if(ball.hSpeed > 0) {
+                if(typeof(collision(ball, player1)) == "number" && collision(ball, player1) >= -25) {
+                    player1.strongStrike = true;
+                }
+            }
             break;
         case "KeyW":
             keys.KeyW = true;
@@ -30,6 +35,11 @@ function manageKeyDown(e) {
             break;
         case "KeyD":
             keys.KeyD = true;
+            if(ball.hSpeed < 0) {
+                if(typeof(collision(ball, player2)) == "number" && collision(ball, player2) <= 25) {
+                    player2.strongStrike = true;
+                }
+            }
     }
 }
 

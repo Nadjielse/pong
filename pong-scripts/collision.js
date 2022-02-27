@@ -5,6 +5,13 @@ function collision(obj1, obj2) {
     let lCol = obj2.x + obj2.width - obj1.x;
 
     if(tCol < 0 || rCol < 0 || bCol < 0 || lCol < 0) {
+        if(rCol < 0 && tCol > 0 && bCol > 0) {
+            return rCol;
+        }
+        if(lCol < 0 && tCol > 0 && bCol > 0) {
+            return lCol * -1;
+        }
+
         return null;
     }
 
@@ -38,6 +45,13 @@ function handleCollisions() {
     //Ball & player horizontal collision
     if(collision(ball, player1) == "right") {
         ball.hSpeed *= -1;
+        if(player1.strongStrike) {
+            if(ball.hSpeed > -12) ball.hSpeed--;
+            player1.strongStrike = false;
+        }
+        else {
+            ball.hSpeed = -5;
+        }
 
         if(ball.vSpeed > 0) {
             if(player1.movingDown) ball.vSpeed *= 1.2;
@@ -50,6 +64,13 @@ function handleCollisions() {
     }
     if(collision(ball, player2) == "left") {
         ball.hSpeed *= -1;
+        if(player2.strongStrike) {
+            if(ball.hSpeed < 12) ball.hSpeed++;
+            player2.strongStrike = false;
+        }
+        else {
+            ball.hSpeed = 5;
+        }
 
         if(ball.vSpeed > 0) {
             if(player2.movingDown) ball.vSpeed *= 1.2;
