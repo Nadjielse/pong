@@ -13,38 +13,47 @@ class Ball {
         ctx.fillStyle = "rgb(200, 200, 200)";
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
-    /*
-    move() {
-        if(this.moving == false && this.x + this.width == player1.x) {
-            if(keys.ArrowLeft) {
-                this.vSpeed = parseInt(Math.random() * 10) % 5 + 6;
-                if(player1.movingUp) this.vSpeed *= -1;
-                if(!player1.isMoving()) this.vSpeed *= -1;
-                this.hSpeed = -3;
-                this.moving = true;
-            }
-        }
-        if(this.moving == false && this.x == player2.x + player2.width) {
-            if(keys.KeyD) {
-                this.vSpeed = parseInt(Math.random() * 10) % 5 + 6;
-                if(!player2.isMoving()) this.vSpeed *= -1;
-                if(player2.movingUp) this.vSpeed *= -1;
-                this.hSpeed = 3;
-                this.moving = true;
-            }
-        }
 
-        if(this.y <= 0) {
-            this.vSpeed *= -1;
+    move() {
+        //Throw ball
+        if(!this.moving && collision(this, player1) == "right") {
+            if(keys.ArrowLeft) {
+
+                this.vSpeed = (parseInt(Math.random() * 10) % 3 + 1);
+                if(!player1.isMoving()) {
+                    this.vSpeed *= randomizeSignal();
+                }
+                if(player1.movingUp) {
+                    this.vSpeed *= -1;
+                }
+
+                this.hSpeed = -5;
+                
+                this.moving = true;
+
+            }
         }
-        if(this.y >= canvas.height - this.height) {
-            this.vSpeed *= -1;
+        if(!this.moving && collision(ball, player2) == "left") {
+            if(keys.KeyD) {
+
+                this.vSpeed = (parseInt(Math.random() * 10) % 3 + 1);
+                if(!player2.isMoving()) {
+                    this.vSpeed *= randomizeSignal();
+                }
+                if(player2.movingUp) {
+                    this.vSpeed *= -1;
+                }
+
+                this.hSpeed = 5;
+                
+                this.moving = true;
+
+            }
         }
 
         this.y += this.vSpeed;
         this.x += this.hSpeed;
     }
-    */
 }
 
 class Racket {
