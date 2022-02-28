@@ -1,9 +1,17 @@
 class Ball {
-    constructor(x, y) {
+    constructor() {
         this.width = 25;
         this.height = 25;
-        this.x = x;
-        this.y = y;
+        if(ballOwner == 1) {
+            this.x = player1.x - this.width;
+            this.y = player1.y + player1.height / 2 - this.height / 2;
+            ballOwner = null;
+        }
+        if(ballOwner == 2) {
+            this.x = player2.x + player2.width;
+            this.y = player2.y + player2.height / 2 - this.height / 2;
+            ballOwner = null;
+        }
         this.hSpeed = 0;
         this.vSpeed = 0;
         this.moving = false;
@@ -15,10 +23,17 @@ class Ball {
     }
 
     move() {
-        //Throw ball
         if(!this.moving && collision(this, player1) == "right") {
-            if(keys.ArrowLeft) {
+            //Move ball with player
+            if(player1.movingUp) {
+                ball.y -= player1.speed;
+            }
+            if(player1.movingDown) {
+                ball.y += player1.speed;
+            }
 
+            //Throw ball
+            if(keys.ArrowLeft) {
                 this.vSpeed = (parseInt(Math.random() * 10) % 3 + 1);
                 if(!player1.isMoving()) {
                     this.vSpeed *= randomizeSignal();
@@ -26,16 +41,21 @@ class Ball {
                 if(player1.movingUp) {
                     this.vSpeed *= -1;
                 }
-
                 this.hSpeed = -5;
-                
                 this.moving = true;
-
             }
         }
         if(!this.moving && collision(ball, player2) == "left") {
-            if(keys.KeyD) {
+            //Move ball with player
+            if(player2.movingUp) {
+                ball.y -= player2.speed;
+            }
+            if(player2.movingDown) {
+                ball.y += player2.speed;
+            }
 
+            //Throw ball
+            if(keys.KeyD) {
                 this.vSpeed = (parseInt(Math.random() * 10) % 3 + 1);
                 if(!player2.isMoving()) {
                     this.vSpeed *= randomizeSignal();
@@ -43,11 +63,8 @@ class Ball {
                 if(player2.movingUp) {
                     this.vSpeed *= -1;
                 }
-
                 this.hSpeed = 5;
-                
                 this.moving = true;
-
             }
         }
 
@@ -59,6 +76,7 @@ class Ball {
 
 class Racket {
     constructor(player) {
+        this.points = 0;
         this.player = player;
         this.width = 25;
         this.height = 100;
@@ -84,6 +102,13 @@ class Racket {
     }
 
     move() {
+        if(this.y <= 0 && this.movingUp) {
+            this.movingUp = false;
+        }
+        if(this.y + this.height >= canvas.height && this.movingDown) {
+            this.movingDown = false;
+        }
+
         if(this.player == 1) {
             if(keys.ArrowUp && this.y > 0) {
                 this.y -= this.speed;
