@@ -12,10 +12,12 @@ function manageKeyDown(e) {
         case "ArrowUp":
             keys.ArrowUp = true;
             player1.movingUp = true;
+            e.preventDefault();
             break;
         case "ArrowDown":
             keys.ArrowDown = true;
             player1.movingDown = true;
+            e.preventDefault();
             break;
         case "ArrowLeft":
             keys.ArrowLeft = true;
