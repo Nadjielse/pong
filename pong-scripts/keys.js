@@ -68,3 +68,7 @@ function manageKeyUp(e) {
             keys.KeyD = false;
     }
 }
+
+window.onkeydown = manageKeyDown;
+
+window.onkeyup = manageKeyUp;
