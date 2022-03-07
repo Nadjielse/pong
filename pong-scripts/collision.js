@@ -46,39 +46,39 @@ function handleCollisions() {
     if(collision(ball, player1) == "right") {
         ball.hSpeed *= -1;
         if(player1.strongStrike) {
-            if(ball.hSpeed > -12) ball.hSpeed--;
+            if(ball.hSpeed > -(ball.startSpeed + 7)) ball.hSpeed--;
             player1.strongStrike = false;
         }
         else {
-            ball.hSpeed = -5;
+            ball.hSpeed = -ball.startSpeed;
         }
 
         if(ball.vSpeed > 0) {
-            if(player1.movingDown) ball.vSpeed *= 1.2;
-            if(player1.movingUp) ball.vSpeed *= -0.9;
+            if(player1.movingDown && Math.abs(ball.vSpeed) < 9) ball.vSpeed *= 1.25;
+            if(player1.movingUp && Math.abs(ball.vSpeed) > 2) ball.vSpeed *= -0.9;
         }
         if(ball.vSpeed < 0) {
-            if(player1.movingDown) ball.vSpeed *= -0.9;
-            if(player1.movingUp) ball.vSpeed *= 1.2;
+            if(player1.movingDown && Math.abs(ball.vSpeed) > 2) ball.vSpeed *= -0.9;
+            if(player1.movingUp && Math.abs(ball.vSpeed) < 9) ball.vSpeed *= 1.25;
         }
     }
     if(collision(ball, player2) == "left") {
         ball.hSpeed *= -1;
         if(player2.strongStrike) {
-            if(ball.hSpeed < 12) ball.hSpeed++;
+            if(ball.hSpeed < ball.startSpeed + 7) ball.hSpeed++;
             player2.strongStrike = false;
         }
         else {
-            ball.hSpeed = 5;
+            ball.hSpeed = ball.startSpeed;
         }
 
         if(ball.vSpeed > 0) {
-            if(player2.movingDown) ball.vSpeed *= 1.2;
-            if(player2.movingUp) ball.vSpeed *= -0.9;
+            if(player2.movingDown && Math.abs(ball.vSpeed) < 9) ball.vSpeed *= 1.25;
+            if(player2.movingUp && Math.abs(ball.vSpeed) > 2) ball.vSpeed *= -0.9;
         }
         if(ball.vSpeed < 0) {
-            if(player2.movingDown) ball.vSpeed *= -0.9;
-            if(player2.movingUp) ball.vSpeed *= 1.2;
+            if(player2.movingDown && Math.abs(ball.vSpeed) > 2) ball.vSpeed *= -0.9;
+            if(player2.movingUp && Math.abs(ball.vSpeed) < 9) ball.vSpeed *= 1.25;
         }
     }
 

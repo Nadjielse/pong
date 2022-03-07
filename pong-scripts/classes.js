@@ -1,5 +1,6 @@
 class Ball {
     constructor() {
+        this.startSpeed = 7;
         this.width = 25;
         this.height = 25;
         if(ballOwner == 1) {
@@ -34,14 +35,14 @@ class Ball {
 
             //Throw ball
             if(keys.ArrowLeft) {
-                this.vSpeed = (parseInt(Math.random() * 10) % 3 + 1);
+                this.vSpeed = (parseInt(Math.random() * 10) % 6 + 4);
                 if(!player1.isMoving()) {
                     this.vSpeed *= randomizeSignal();
                 }
                 if(player1.movingUp) {
                     this.vSpeed *= -1;
                 }
-                this.hSpeed = -5;
+                this.hSpeed = -this.startSpeed;
                 this.moving = true;
             }
         }
@@ -56,14 +57,14 @@ class Ball {
 
             //Throw ball
             if(keys.KeyD) {
-                this.vSpeed = (parseInt(Math.random() * 10) % 3 + 1);
+                this.vSpeed = (parseInt(Math.random() * 10) % 6 + 4);
                 if(!player2.isMoving()) {
                     this.vSpeed *= randomizeSignal();
                 }
                 if(player2.movingUp) {
                     this.vSpeed *= -1;
                 }
-                this.hSpeed = 5;
+                this.hSpeed = this.startSpeed;
                 this.moving = true;
             }
         }
@@ -76,6 +77,7 @@ class Ball {
 
 class Racket {
     constructor(player) {
+        this.defaultSpeed = 10;
         this.points = 0;
         this.player = player;
         this.width = 25;
@@ -90,7 +92,7 @@ class Racket {
         }
 
         this.y = canvas.height / 2 - this.height / 2;
-        this.speed = 10;
+        this.speed = this.defaultSpeed;
         this.movingUp = false;
         this.movingDown = false;
         this.strongStrike = false;
