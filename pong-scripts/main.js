@@ -3,8 +3,11 @@ canvas.width = parseInt(window.getComputedStyle(canvas).getPropertyValue("width"
 canvas.height = parseInt(window.getComputedStyle(canvas).getPropertyValue("height"));
 const ctx = canvas.getContext("2d");
 
+const PointsToWin = 10;
+
 //Main code
 
+let winner = null;
 const player1 = new Racket(1);
 const player2 = new Racket(2);
 let ballOwner = randomizeBallOwner();
@@ -15,18 +18,26 @@ let objs = [player1, player2, ball];
 
 
 function loop() {
+    //Refresh screen
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     background();
-    handleCollisions();
-    handlePoints();
-    if(ballOwner) {
-        ball = new Ball();
-        objs[2] = ball;
-    }
-    moveObjs();
-    drawObjs();
-    drawPoints();
+    
+    //Game flow
+    if(!winner) {
+        handleCollisions();
+        handlePoints();
+        if(ballOwner) {
+            ball = new Ball();
+            objs[2] = ball;
+        }
+        moveObjs();
+        drawObjs();
+        drawPoints();
 
-    requestAnimationFrame(loop);
+        requestAnimationFrame(loop);
+    }
+    else {
+        displayVictory();
+    }
 }
 loop();
