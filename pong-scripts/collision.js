@@ -36,9 +36,11 @@ function handleCollisions() {
 
     //Ball boundary collisions
     if(ball.y <= 0) {
+        if(!sound.wallBounce || sound.wallBounce.ended) sound.wallBounce = playSfx("wall-bounce.wav");
         ball.vSpeed *= -1;
     }
-    if(ball.y >= canvas.height - ball.height) {
+    if(ball.y + ball.height >= canvas.height) {
+        if(!sound.wallBounce || sound.wallBounce.ended) sound.wallBounce = playSfx("wall-bounce.wav");
         ball.vSpeed *= -1;
     }
 
@@ -47,9 +49,11 @@ function handleCollisions() {
         ball.hSpeed *= -1;
         if(player1.strongStrike) {
             if(ball.hSpeed > -(ball.startSpeed + 7)) ball.hSpeed--;
+            sound.strongStrike = playStrongStrikeSfx();
             player1.strongStrike = false;
         }
         else {
+            if(!sound.strike || sound.strike.ended) sound.strike = playSfx("strike.wav");
             ball.hSpeed = -ball.startSpeed;
         }
 
@@ -66,9 +70,11 @@ function handleCollisions() {
         ball.hSpeed *= -1;
         if(player2.strongStrike) {
             if(ball.hSpeed < ball.startSpeed + 7) ball.hSpeed++;
+            sound.strongStrike = playStrongStrikeSfx();
             player2.strongStrike = false;
         }
         else {
+            if(!sound.strike || sound.strike.ended) sound.strike = playSfx("strike.wav");
             ball.hSpeed = ball.startSpeed;
         }
 
@@ -84,19 +90,23 @@ function handleCollisions() {
 
     //Ball & player vertical collision
     if(collision(ball, player1) == "top") {
+        if(!sound.strike || sound.strike.ended) sound.strike = playSfx("strike.wav");
         if(ball.vSpeed < 0) ball.vSpeed *= -1;
-        if(player1.isMoving()) ball.vSpeed *= 2;
+        if(player1.isMoving()) ball.vSpeed *= 1.25;
     }
     if(collision(ball, player1) == "bottom") {
+        if(!sound.strike || sound.strike.ended) sound.strike = playSfx("strike.wav");
         if(ball.vSpeed > 0) ball.vSpeed *= -1;
-        if(player1.isMoving()) ball.vSpeed *= 2;
+        if(player1.isMoving()) ball.vSpeed *= 1.25;
     }
     if(collision(ball, player2) == "top") {
+        if(!sound.strike || sound.strike.ended) sound.strike = playSfx("strike.wav");
         if(ball.vSpeed < 0) ball.vSpeed *= -1;
-        if(player2.isMoving()) ball.vSpeed *= 2;
+        if(player2.isMoving()) ball.vSpeed *= 1.25;
     }
     if(collision(ball, player2) == "bottom") {
+        if(!sound.strike || sound.strike.ended) sound.strike = playSfx("strike.wav");
         if(ball.vSpeed > 0) ball.vSpeed *= -1;
-        if(player2.isMoving()) ball.vSpeed *= 2;
+        if(player2.isMoving()) ball.vSpeed *= 1.25;
     }
 }
