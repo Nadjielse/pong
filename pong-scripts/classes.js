@@ -35,6 +35,7 @@ class Ball {
 
             //Throw ball
             if(keys.ArrowLeft) {
+                sound.strike = playSfx("strike.wav");
                 this.vSpeed = (parseInt(Math.random() * 10) % 6 + 4);
                 if(!player1.isMoving()) {
                     this.vSpeed *= randomizeSignal();
@@ -57,6 +58,7 @@ class Ball {
 
             //Throw ball
             if(keys.KeyD) {
+                sound.strike = playSfx("strike.wav");
                 this.vSpeed = (parseInt(Math.random() * 10) % 6 + 4);
                 if(!player2.isMoving()) {
                     this.vSpeed *= randomizeSignal();
