@@ -4,7 +4,7 @@ canvas.height = parseInt(window.getComputedStyle(canvas).getPropertyValue("heigh
 const ctx = canvas.getContext("2d");
 
 const PointsToWin = 10;
-const StrongStrikeGap = 25;
+const StrongStrikeGap = 25 * 2;
 
 //Main code
 
