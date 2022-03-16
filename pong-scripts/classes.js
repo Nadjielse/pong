@@ -1,8 +1,8 @@
 class Ball {
     constructor() {
         this.startSpeed = 7;
-        this.width = 25;
-        this.height = 25;
+        this.width = tileSize;
+        this.height = tileSize;
         if(ballOwner == 1) {
             this.x = player1.x - this.width;
             this.y = player1.y + player1.height / 2 - this.height / 2;
@@ -82,8 +82,8 @@ class Racket {
         this.defaultSpeed = 10;
         this.points = 0;
         this.player = player;
-        this.width = 25;
-        this.height = 100;
+        this.width = tileSize;
+        this.height = tileSize * 4;
 
         switch(this.player) {
             case 1:

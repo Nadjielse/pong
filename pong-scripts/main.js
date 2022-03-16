@@ -3,8 +3,9 @@ canvas.width = parseInt(window.getComputedStyle(canvas).getPropertyValue("width"
 canvas.height = parseInt(window.getComputedStyle(canvas).getPropertyValue("height"));
 const ctx = canvas.getContext("2d");
 
+const tileSize = Math.round(canvas.height / 22);
 const PointsToWin = 10;
-const StrongStrikeGap = 25 * 2;
+const StrongStrikeGap = tileSize * 2;
 
 //Main code
 
