@@ -1,25 +1,28 @@
-# Pong Plus
-## About
-Pong Plus is a local multiplayer game (2 players) based on the 70s Pong game. This game was made for practicing javascript.
+<h1 align="center">Pong+</h1>
+<p align="center">A remake of the original Atari's Pong game</p>
 
-Pong Plus é um jogo de multiplayer local (de 2 jogadores) baseado no jogo Pong da década de 70. Esse jogo foi feito para praticar javascript.
+![pong-plus](https://github.com/nadjiel/pong-plus/assets/97067805/bebae55b-dd1f-4026-a171-518ea88b630a)
 
-## Accessing
-To play the game you can access this link: [pong-plus](https://nadjiel.github.io/pong-plus/)
+## 🎾 About
+Pong+ is a local multiplayer game (2 players) based on the 70s Pong game that was made for practicing the Javascript language.
 
-Para jogar Pong Plus você pode acessar este link: [pong-plus](https://nadjiel.github.io/pong-plus/)
+This game was originally made to be a part of a minigames site developed as a project for the Web Script Languages subject at a System Analysis and Development graduation course.
 
-## Controling
-The buttons to control the rackets in this game are:
+If you want to see the site for which this game was built, here is the repository: [Minigame Mayhem](https://github.com/nadjielse/minigame-mayhem) (The version of the game that is on the site has some slight modifications, for example, there the game is single player against the computer).
 
-- Arrow Up/ W key: Move up
-- Arrow Down/ S key: Move down
-- Arrow Left/ D key: Strong strike
+## 👇 Accessing
+The game is easily available on this link: [Pong+](https://nadjiel.github.io/pong-plus/).
 
-Os botões para controlar as raquetes nesse jogo são:
+## 🕹️ Controlling
+The controls for this game are, for player 1 and player 2, respectively:
 
-- Seta para Cima/ Tecla W: Move up
-- Seta para Baixo/ Tecla S: Move down
-- Seta para Esquerda/ Tecla D: Strong strike
+- <kbd>&#8593;</kbd> and <kbd>W</kbd>: Move up
+- <kbd>&#8595;</kbd> and <kbd>S</kbd>: Move down
+- <kbd>&#8592;</kbd> and <kbd>D</kbd>: Strong Strike
 
-### Project made by [@Nadjiel](https://github.com/Nadjiel)
+The Strong Strike is a small addition I put in this game that allows the players to send the ball faster to the oponent's side if they time well their strikes.
+
+## ✍️ Author
+Made with ❤️ by [@Nadjiel](https://github.com/Nadjiel)
+
+### [Leia em português](https://github.com/nadjiel/pong-plus/blob/main/readmes/README.pt-br.md)
